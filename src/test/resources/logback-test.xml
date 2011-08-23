@@ -9,7 +9,19 @@
 		</layout>
 	</appender>
 
+	<appender
+		name="DB"
+		class="ch.qos.logback.classic.db.DBAppender">
+		<connectionSource class="ch.qos.logback.core.db.DriverManagerConnectionSource">
+			<driverClass>org.hsqldb.jdbcDriver</driverClass>
+			<url>jdbc:hsqldb:file:log/testlog;hsqldb.write_delay=false;shutdown=true;</url>
+			<user>sa</user>
+			<password></password>
+		</connectionSource>
+	</appender>
+
 	<root level="debug">
 		<appender-ref ref="STDOUT" />
+		<appender-ref ref="DB" />
 	</root>
 </configuration>

@@ -1,0 +1,4 @@
+Logging into db.
+Used db: hsqldb 2.0
+Logging into file.
+Base logging scripts are in the log directory (create specified tables, set write delay, etc.)
