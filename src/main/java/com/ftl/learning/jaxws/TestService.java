@@ -1,8 +1,9 @@
 package com.ftl.learning.jaxws;
 
-import javax.jws.WebService;
-
-@WebService
+/**
+ * TestService interface
+ * 
+ */
 public interface TestService {
 	/**
 	 * Inverts string's alphabetchical characters.
