@@ -88,6 +88,7 @@ public class PrimeUtil {
 		}
 
 		foundPrimes[lastPos++] = number;
+		System.out.println("Prim number: " + number + ", Count of primes: " + lastPos);
 		if (sizeOf == lastPos) {
 			sizeOf += growWeight;
 			long[] temp = foundPrimes;

@@ -10,13 +10,16 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 import javax.validation.Constraint;
+import javax.validation.Payload;
 
 @Target({ METHOD, FIELD, ANNOTATION_TYPE })
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = PrimeValidator.class)
 @Documented
 public @interface Prime {
-	String message() default "{validator.prime}";
+	String message() default "Invalid number. Not a prime.";
 
 	Class<?>[] groups() default {};
+
+	Class<? extends Payload>[] payload() default {};
 }

@@ -50,12 +50,13 @@ public class TestTestService {
 	@Test
 	public void testSumProd() {
 		SumProdDTO sumProdDTO = new SumProdDTO();
-		sumProdDTO.setX(2);
-		sumProdDTO.setY(3);
+		sumProdDTO.setX(-2);
+		sumProdDTO.setY(7);
 		double ret[] = testService.sumProd(sumProdDTO);
 		assertTrue(ret.length == 2);
 		assertTrue(ret[0] == 5);
-		assertTrue(ret[1] == 6);
+		assertTrue(ret[1] == -14);
+		System.out.println();
 	}
 
 	@AfterClass
