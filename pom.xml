@@ -141,6 +141,7 @@
 				<configuration>
 					<downloadSources>true</downloadSources>
 					<downloadJavadocs>true</downloadJavadocs>
+					<ajdtVersion>1.6.12</ajdtVersion>
 				</configuration>
 			</plugin>
 		</plugins>

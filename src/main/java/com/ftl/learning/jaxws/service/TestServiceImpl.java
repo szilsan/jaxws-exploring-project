@@ -9,17 +9,17 @@ import org.slf4j.LoggerFactory;
 @WebService(serviceName = "testService", name = "testService")
 public class TestServiceImpl implements TestService {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(TestService.class);
+	private static final Logger logger = LoggerFactory.getLogger(TestService.class);
 
 	@Override
 	@WebMethod
 	public String invert(String text) {
 
-		LOGGER.debug("String to invert: " + text);
+		logger.debug("String to invert: " + text);
 
 		// if it is empty
 		if (text == null || text.trim().length() == 0) {
-			LOGGER.debug(text == null ? "The text was null" : "Inverted text: " + text);
+			logger.debug(text == null ? "The text was null" : "Inverted text: " + text);
 			return text;
 		}
 
@@ -35,7 +35,7 @@ public class TestServiceImpl implements TestService {
 			sb.append(c);
 		}
 
-		LOGGER.debug("Inverted text: " + sb.toString());
+		logger.debug("Inverted text: " + sb.toString());
 		return sb.toString();
 	}
 
@@ -46,7 +46,7 @@ public class TestServiceImpl implements TestService {
 		retValue[0] = x + y;
 		retValue[1] = x * y;
 
-		LOGGER.debug("Result of sumprod: " + x + ", " + y + ". Sum=" + retValue[0] + " Prod: " + retValue[1]);
+		logger.debug("Result of sumprod: " + x + ", " + y + ". Sum=" + retValue[0] + " Prod: " + retValue[1]);
 		return retValue;
 	}
 }
