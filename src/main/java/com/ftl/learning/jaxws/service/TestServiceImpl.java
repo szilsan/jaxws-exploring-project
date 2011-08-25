@@ -6,6 +6,10 @@ import javax.jws.WebService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.ftl.learning.jaxws.manager.TestManager;
+import com.ftl.learning.jaxws.service.dto.InvertDTO;
+import com.ftl.learning.jaxws.service.dto.SumProdDTO;
+
 @WebService(serviceName = "testService", name = "testService")
 public class TestServiceImpl implements TestService {
 
@@ -13,40 +17,20 @@ public class TestServiceImpl implements TestService {
 
 	@Override
 	@WebMethod
-	public String invert(String text) {
-
-		logger.debug("String to invert: " + text);
-
-		// if it is empty
-		if (text == null || text.trim().length() == 0) {
-			logger.debug(text == null ? "The text was null" : "Inverted text: " + text);
-			return text;
+	public String invert(InvertDTO invertDTO) {
+		if (invertDTO == null) {
+			throw new IllegalArgumentException("Input object can not be null.");
 		}
 
-		StringBuilder sb = new StringBuilder();
-		for (char c : text.toCharArray()) {
-			if (Character.isLetter(c)) {
-				if (Character.isUpperCase(c)) {
-					c = Character.toLowerCase(c);
-				} else {
-					c = Character.toUpperCase(c);
-				}
-			}
-			sb.append(c);
-		}
-
-		logger.debug("Inverted text: " + sb.toString());
-		return sb.toString();
+		return TestManager.invertString(invertDTO.getInputString());
 	}
 
 	@Override
-	public double[] sumProd(double x, double y) {
-		double[] retValue = new double[2];
+	public double[] sumProd(SumProdDTO sumProdDTO) {
+		if (sumProdDTO == null) {
+			throw new IllegalArgumentException("Input object can not be null.");
+		}
 
-		retValue[0] = x + y;
-		retValue[1] = x * y;
-
-		logger.debug("Result of sumprod: " + x + ", " + y + ". Sum=" + retValue[0] + " Prod: " + retValue[1]);
-		return retValue;
+		return TestManager.sumProd(sumProdDTO.getX(), sumProdDTO.getY());
 	}
 }

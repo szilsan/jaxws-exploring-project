@@ -1,5 +1,8 @@
 package com.ftl.learning.jaxws.service;
 
+import com.ftl.learning.jaxws.service.dto.InvertDTO;
+import com.ftl.learning.jaxws.service.dto.SumProdDTO;
+
 /**
  * TestService interface
  * 
@@ -11,7 +14,7 @@ public interface TestService {
 	 * @param text
 	 * @return
 	 */
-	String invert(String text);
+	String invert(InvertDTO invertDTO);
 
 	/**
 	 * Returns an array containing sum and prod of paramaters.
@@ -20,6 +23,6 @@ public interface TestService {
 	 * @param y
 	 * @return
 	 */
-	double[] sumProd(double x, double y);
+	double[] sumProd(SumProdDTO sumProdDTO);
 
 }

@@ -8,9 +8,16 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.ftl.learning.jaxws.service.TestService;
-import com.ftl.learning.jaxws.service.TestServiceImpl;
+import com.ftl.learning.jaxws.service.dto.InvertDTO;
+import com.ftl.learning.jaxws.service.dto.SumProdDTO;
 
+/**
+ * Test TestService
+ * 
+ * It is different from TestManager. This test contains field validations too.
+ * 
+ * 
+ */
 public class TestTestService {
 
 	private static TestService testService;
@@ -23,16 +30,29 @@ public class TestTestService {
 
 	@Test
 	public void testInvert() {
-		assertEquals("almafa", testService.invert("ALMAFA"));
-		assertEquals("ALMAFA", testService.invert("almafa"));
-		assertEquals("alMAfa", testService.invert("ALmaFA"));
-		assertEquals("   ", testService.invert("   "));
-		assertEquals("+-almafa", testService.invert("+-ALMAFA"));
+		InvertDTO invertDTO = new InvertDTO();
+		invertDTO.setInputString("ALMAFA");
+		assertEquals("almafa", testService.invert(invertDTO));
+
+		invertDTO.setInputString("almafa");
+		assertEquals("ALMAFA", testService.invert(invertDTO));
+
+		invertDTO.setInputString("ALmaFA");
+		assertEquals("alMAfa", testService.invert(invertDTO));
+
+		invertDTO.setInputString("   ");
+		assertEquals("   ", testService.invert(invertDTO));
+
+		invertDTO.setInputString("+-ALMAFA");
+		assertEquals("+-almafa", testService.invert(invertDTO));
 	}
 
 	@Test
 	public void testSumProd() {
-		double ret[] = testService.sumProd(2, 3);
+		SumProdDTO sumProdDTO = new SumProdDTO();
+		sumProdDTO.setX(2);
+		sumProdDTO.setY(3);
+		double ret[] = testService.sumProd(sumProdDTO);
 		assertTrue(ret.length == 2);
 		assertTrue(ret[0] == 5);
 		assertTrue(ret[1] == 6);
