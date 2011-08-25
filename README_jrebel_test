@@ -1,0 +1,13 @@
+This branch is for testing jrebel.
+
+Tested. Result:
+- free for OSS and Scala
+- maven, jetty setup: http://www.zeroturnaround.com/reference-manual/server.html#server-4.4.15
+  - work correctly
+  - tested: add, remove imports, change code (jetty auto refresh was turned off)
+- eclipse
+  - tested in debug mode (unit tests)
+  - not work if the debugged (and you are on a breakpoint in it) method was changed and compiled
+  - work if different method was chnaged
+  
+Seems fast.

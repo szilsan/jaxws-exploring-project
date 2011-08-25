@@ -16,7 +16,7 @@ public class TestTestService {
 	private static TestService testService;
 
 	@BeforeClass
-	public static void before() {
+	public static void beforeClass() {
 		testService = new TestServiceImpl();
 		assertNotNull(testService);
 	}
