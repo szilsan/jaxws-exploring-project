@@ -7,7 +7,7 @@ import org.apache.commons.lang.ArrayUtils;
  */
 public class PrimeUtil {
 
-	private static final int growWeight = 100;
+	private static final int growWeight = 10000;
 	private static int sizeOf = growWeight;
 	private static long[] foundPrimes = new long[sizeOf];
 	private static int lastPos = 0;
