@@ -29,21 +29,21 @@ aspect MethodWatcherAspect {
 	}
 	
 	Object around() : publicMethods() {
-		long start, end;
-		start = System.currentTimeMillis();
+//		long start, end;
+//		start = System.currentTimeMillis();
 		Object ret = proceed();
-		end = System.currentTimeMillis();
+//		end = System.currentTimeMillis();
 		
-		if (methodTakesTime.containsKey( thisJoinPoint.getStaticPart().getSignature().toShortString())) {
-		    for(Entry<String,Long> entry : methodTakesTime.entrySet() ) {
-		        if( entry.getKey().equals(thisJoinPoint.getStaticPart().getSignature().toShortString()) ) {
-		            entry.setValue(entry.getValue()+(end-start));
-		            break;
-		        }
-		    }
-		} else {
-			methodTakesTime.put(thisJoinPoint.getStaticPart().getSignature().toShortString(), end-start);
-		}
+//		if (methodTakesTime.containsKey( thisJoinPoint.getStaticPart().getSignature().toShortString())) {
+//		    for(Entry<String,Long> entry : methodTakesTime.entrySet() ) {
+//		        if( entry.getKey().equals(thisJoinPoint.getStaticPart().getSignature().toShortString()) ) {
+//		            entry.setValue(entry.getValue()+(end-start));
+//		            break;
+//		        }
+//		    }
+//		} else {
+//			methodTakesTime.put(thisJoinPoint.getStaticPart().getSignature().toShortString(), end-start);
+//		}
 		
 		return ret;
 	}

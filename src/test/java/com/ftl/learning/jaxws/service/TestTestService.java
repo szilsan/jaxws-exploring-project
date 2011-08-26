@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import com.ftl.learning.jaxws.service.dto.InvertDTO;
 import com.ftl.learning.jaxws.service.dto.SumProdDTO;
+import com.ftl.learning.jaxws.service.dto.SumProdResponseDTO;
 
 /**
  * Test TestService
@@ -52,10 +53,9 @@ public class TestTestService {
 		SumProdDTO sumProdDTO = new SumProdDTO();
 		sumProdDTO.setX(-2);
 		sumProdDTO.setY(7);
-		double ret[] = testService.sumProd(sumProdDTO);
-		assertTrue(ret.length == 2);
-		assertTrue(ret[0] == 5);
-		assertTrue(ret[1] == -14);
+		SumProdResponseDTO ret = testService.sumProd(sumProdDTO);
+		assertTrue(ret.getSum() == 5);
+		assertTrue(ret.getProd() == -14);
 		System.out.println();
 	}
 

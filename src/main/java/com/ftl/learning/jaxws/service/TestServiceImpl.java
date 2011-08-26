@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import com.ftl.learning.jaxws.manager.TestManager;
 import com.ftl.learning.jaxws.service.dto.InvertDTO;
 import com.ftl.learning.jaxws.service.dto.SumProdDTO;
+import com.ftl.learning.jaxws.service.dto.SumProdResponseDTO;
 
 @WebService(serviceName = "testService", name = "testService")
 public class TestServiceImpl implements TestService {
@@ -26,11 +27,12 @@ public class TestServiceImpl implements TestService {
 	}
 
 	@Override
-	public double[] sumProd(SumProdDTO sumProdDTO) {
+	public SumProdResponseDTO sumProd(SumProdDTO sumProdDTO) {
 		if (sumProdDTO == null) {
 			throw new IllegalArgumentException("Input object can not be null.");
 		}
 
-		return TestManager.sumProd(sumProdDTO.getX(), sumProdDTO.getY());
+		double[] response = TestManager.sumProd(sumProdDTO.getX(), sumProdDTO.getY());
+		return new SumProdResponseDTO(response[0], response[1]);
 	}
 }

@@ -2,6 +2,7 @@ package com.ftl.learning.jaxws.service;
 
 import com.ftl.learning.jaxws.service.dto.InvertDTO;
 import com.ftl.learning.jaxws.service.dto.SumProdDTO;
+import com.ftl.learning.jaxws.service.dto.SumProdResponseDTO;
 
 /**
  * TestService interface
@@ -23,6 +24,6 @@ public interface TestService {
 	 * @param y
 	 * @return
 	 */
-	double[] sumProd(SumProdDTO sumProdDTO);
+	SumProdResponseDTO sumProd(SumProdDTO sumProdDTO);
 
 }
