@@ -15,7 +15,7 @@ aspect MethodWatcherAspect {
 	/**
 	 * All public methods in this project (except tests)
 	 */
-	pointcut publicMethods(Object[] arg): execution(public * com.ftl.learning..*.*(*)) && !execution(* com.ftl.learning.jaxws.service.PrimeTest.*(*)) && args(arg);// && !execution(* com.ftl.learning.jaxws.service.wsclient..*.*(..));
+	pointcut publicMethods(Object[] arg): (execution(public * com.ftl.learning..*.*(*)) && !execution(* com.ftl.learning.jaxws.service.PrimeTest.*(*)) && args(arg)) && !execution(public * com.ftl.learning.jaxws.filter..*.*(..));
 
 	/**
 	 * For test methods to print statistic

@@ -3,6 +3,8 @@ package com.ftl.learning.jaxws.manager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.ftl.learning.jaxws.filter.LOGMarkers;
+
 public class TestManager {
 
 	private static final Logger logger = LoggerFactory.getLogger(TestManager.class);
@@ -14,11 +16,11 @@ public class TestManager {
 	 * @return
 	 */
 	public static String invertString(String text) {
-		logger.debug("String to invert: " + text);
+		logger.debug(LOGMarkers.SIMPLE_MARKER, "String to invert: " + text);
 
 		// if it is empty
 		if (text == null || text.trim().length() == 0) {
-			logger.debug(text == null ? "The text was null" : "Inverted text: " + text);
+			logger.debug(LOGMarkers.SIMPLE_MARKER, text == null ? "The text was null" : "Inverted text: " + text);
 			return text;
 		}
 
@@ -34,7 +36,7 @@ public class TestManager {
 			sb.append(c);
 		}
 
-		logger.debug("Inverted text: " + sb.toString());
+		logger.debug(LOGMarkers.SIMPLE_MARKER, "Inverted text: " + sb.toString());
 		return sb.toString();
 	}
 
@@ -51,7 +53,7 @@ public class TestManager {
 		retValue[0] = x + y;
 		retValue[1] = x * y;
 
-		logger.debug("Result of sumprod: " + x + ", " + y + ". Sum=" + retValue[0] + " Prod: " + retValue[1]);
+		logger.debug(LOGMarkers.SIMPLE_MARKER, "Result of sumprod: " + x + ", " + y + ". Sum=" + retValue[0] + " Prod: " + retValue[1]);
 		return retValue;
 	}
 }

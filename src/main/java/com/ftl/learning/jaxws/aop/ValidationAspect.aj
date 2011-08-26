@@ -9,6 +9,8 @@ import javax.validation.ValidatorFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.ftl.learning.jaxws.filter.LOGMarkers;
+
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 
@@ -21,10 +23,10 @@ aspect ValidationAspect {
 	/**
 	 * For web services in this project
 	 */
-	pointcut webMethods(Object dto): (execution(@WebMethod * com.ftl.learning..*.*(..)) ||execution(public * (@WebService com.ftl.learning..*).*(..))) && args(dto);
+	pointcut webMethods(Object dto): ((execution(@WebMethod * com.ftl.learning..*.*(..)) || execution(public * (@WebService com.ftl.learning..*).*(..))) && args(dto)) && !execution(public * com.ftl.learning.jaxws.filter*.*(..));
 
 	before(Object dto): webMethods(dto) {
-		logger.debug("Call ftl web service. Service name: " + AspectUtil.getWebServicename(thisJoinPoint.getTarget().getClass()) + " / Method name: " + thisJoinPoint.getSignature().getName());
+		logger.debug(LOGMarkers.BUSINESS_MARKER,"Call ftl web service. Service name: " + AspectUtil.getWebServicename(thisJoinPoint.getTarget().getClass()) + " / Method name: " + thisJoinPoint.getSignature().getName());
 		validation(dto);
 	}
 
@@ -36,6 +38,7 @@ aspect ValidationAspect {
 	private void validation(Object object) {
 		Validator validator = factory.getValidator();
 		if (object == null) {
+			logger.error(LOGMarkers.BUSINESS_MARKER,"Parameter can not be null.");
 			throw new IllegalArgumentException("Parameter can not be null.");
 		}
 		
@@ -45,6 +48,7 @@ aspect ValidationAspect {
 			for (ConstraintViolation<Object> cv : result) {
 				errorMessage.append(cv.getMessage() + "\n");
 			}
+			logger.error(LOGMarkers.BUSINESS_MARKER,"Error during input validation: " + errorMessage.toString());
 			throw new RuntimeException("Error during input validation: " + errorMessage.toString());
 		}
 	}

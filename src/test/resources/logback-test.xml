@@ -3,6 +3,11 @@
 	<appender
 		name="STDOUT"
 		class="ch.qos.logback.core.ConsoleAppender">
+		<filter class="com.ftl.learning.jaxws.filter.MarkerFilter">
+			<marker>SIMPLE</marker>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
 		<layout class="ch.qos.logback.classic.PatternLayout">
 			<Pattern>[Test]%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
 			</Pattern>
@@ -12,6 +17,11 @@
 	<appender
 		name="DB"
 		class="ch.qos.logback.classic.db.DBAppender">
+		<filter class="com.ftl.learning.jaxws.filter.MarkerFilter">
+			<marker>BUSINESS</marker>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
 		<connectionSource class="ch.qos.logback.core.db.DriverManagerConnectionSource">
 			<driverClass>org.hsqldb.jdbcDriver</driverClass>
 			<url>jdbc:hsqldb:file:log/testlog;hsqldb.write_delay=false;shutdown=true;</url>

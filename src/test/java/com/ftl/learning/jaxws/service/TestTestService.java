@@ -56,7 +56,6 @@ public class TestTestService {
 		SumProdResponseDTO ret = testService.sumProd(sumProdDTO);
 		assertTrue(ret.getSum() == 5);
 		assertTrue(ret.getProd() == -14);
-		System.out.println();
 	}
 
 	@AfterClass
