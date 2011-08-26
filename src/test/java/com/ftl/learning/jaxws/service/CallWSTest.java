@@ -1,6 +1,8 @@
 package com.ftl.learning.jaxws.service;
 
 import com.ftl.learning.jaxws.service.wsclient.InvertDTO;
+import com.ftl.learning.jaxws.service.wsclient.SumProdDTO;
+import com.ftl.learning.jaxws.service.wsclient.SumProdResponseDTO;
 import com.ftl.learning.jaxws.service.wsclient.TestService_Service;
 
 /**
@@ -17,6 +19,14 @@ public class CallWSTest {
 		invertDTO.setInputString("korte");
 		String invertResponse = port.invert(invertDTO);
 		assert (invertResponse.equals("KORTE"));
-		System.out.println("aabb");
+
+		SumProdDTO sumProdDTO = new SumProdDTO();
+		sumProdDTO.setX(-4);
+		sumProdDTO.setY(7);
+		SumProdResponseDTO resp = port.sumProd(sumProdDTO);
+		assert (resp.getSum() == 3);
+		assert (resp.getSum() == -28);
+
+		System.out.println("WS test end");
 	}
 }
