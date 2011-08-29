@@ -1,5 +1,7 @@
 package com.ftl.learning.jaxws.service;
 
+import javax.xml.ws.BindingProvider;
+
 import com.ftl.learning.jaxws.service.wsclient.InvertDTO;
 import com.ftl.learning.jaxws.service.wsclient.SumProdDTO;
 import com.ftl.learning.jaxws.service.wsclient.SumProdResponseDTO;
@@ -14,6 +16,9 @@ public class CallWSTest {
 	public static void main(String[] args) {
 		TestService_Service testService = new TestService_Service();
 		com.ftl.learning.jaxws.service.wsclient.TestService port = testService.getTestServicePort();
+
+		((BindingProvider) port).getRequestContext().put(BindingProvider.USERNAME_PROPERTY, "dan");
+		((BindingProvider) port).getRequestContext().put(BindingProvider.PASSWORD_PROPERTY, "123");
 
 		InvertDTO invertDTO = new InvertDTO();
 		invertDTO.setInputString("korte");
