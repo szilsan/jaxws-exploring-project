@@ -3,6 +3,10 @@ package com.ftl.learning.jaxws.service;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.apache.shiro.authz.annotation.RequiresUser;
+import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,15 +22,20 @@ public class TestServiceImpl implements TestService {
 
 	@Override
 	@WebMethod
+	@RequiresAuthentication
+	@RequiresUser
 	public String invert(InvertDTO invertDTO) {
 		if (invertDTO == null) {
 			throw new IllegalArgumentException("Input object can not be null.");
 		}
 
+		Subject currentUser = SecurityUtils.getSubject();
+
 		return TestManager.invertString(invertDTO.getInputString());
 	}
 
 	@Override
+	@RequiresAuthentication
 	public SumProdResponseDTO sumProd(SumProdDTO sumProdDTO) {
 		if (sumProdDTO == null) {
 			throw new IllegalArgumentException("Input object can not be null.");

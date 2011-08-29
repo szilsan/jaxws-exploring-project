@@ -14,6 +14,10 @@
 		<final.version>1.0</final.version>
 		<artifact.name>${artifactId}</artifact.name>
 		<java.version>1.6</java.version>
+		<shiro.version>1.1.0</shiro.version>
+		<hsqldb.version>2.0.0</hsqldb.version>
+		<aspectj.version>1.6.11</aspectj.version>
+		<junit.version>4.4</junit.version>
 	</properties>
 
 	<repositories>
@@ -61,7 +65,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.4</version>
+			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -76,14 +80,14 @@
 		<dependency>
 			<groupId>org.hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
-			<version>2.0.0</version>
+			<version>${hsqldb.version}</version>
 		</dependency>
 
 		<!-- AspectJ -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
-			<version>1.6.11</version>
+			<version>${aspectj.version}</version>
 		</dependency>
 
 		<!-- Bean validations -->
@@ -99,10 +103,30 @@
 			<artifactId>geronimo-validation_1.0_spec</artifactId>
 			<version>1.1</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.apache.bval</groupId>
 			<artifactId>org.apache.bval.bundle</artifactId>
 			<version>0.3-incubating</version>
+		</dependency>
+
+		<!-- Shiro security http://shiro.apache.org/download.html -->
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-core</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-web</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-aspectj</artifactId>
+			<version>${shiro.version}</version>
 		</dependency>
 
 	</dependencies>
@@ -144,12 +168,25 @@
 				<configuration>
 					<verbose>true</verbose>
 					<complianceLevel>1.6</complianceLevel>
+					<showWeaveInfo>true</showWeaveInfo>
+					<aspectLibraries>
+						<aspectLibrary>
+							<groupId>org.apache.shiro</groupId>
+							<artifactId>shiro-aspectj</artifactId>
+						</aspectLibrary>
+					</aspectLibraries>
 				</configuration>
 				<executions>
 					<execution>
 						<goals>
 							<goal>compile</goal>       <!-- use this goal to weave all your main classes -->
 							<goal>test-compile</goal>  <!-- use this goal to weave all your test classes -->
+						</goals>
+					</execution>
+					<execution>
+						<id>aspectj-compile</id>
+						<goals>
+							<goal>test-compile</goal>
 						</goals>
 					</execution>
 				</executions>
