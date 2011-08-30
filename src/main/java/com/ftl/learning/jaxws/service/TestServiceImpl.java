@@ -1,14 +1,10 @@
 package com.ftl.learning.jaxws.service;
 
-import javax.annotation.Resource;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import javax.xml.ws.WebServiceContext;
-import javax.xml.ws.handler.MessageContext;
 
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,18 +20,10 @@ public class TestServiceImpl implements TestService {
 
 	private static final Logger logger = LoggerFactory.getLogger(TestService.class);
 
-	@Resource
-	private WebServiceContext wsContext;
-
 	@Override
 	@WebMethod
-	// @RequiresAuthentication
+	@RequiresAuthentication
 	public String invert(InvertDTO invertDTO) {
-
-		MessageContext msgContext = wsContext.getMessageContext();
-		HttpServletRequest request = (HttpServletRequest) msgContext.get(MessageContext.SERVLET_REQUEST);
-		HttpSession session = request.getSession();
-
 		if (invertDTO == null) {
 			throw new IllegalArgumentException("Input object can not be null.");
 		}
@@ -48,7 +36,7 @@ public class TestServiceImpl implements TestService {
 	}
 
 	@Override
-	// @RequiresAuthentication
+	@RequiresAuthentication
 	public SumProdResponseDTO sumProd(SumProdDTO sumProdDTO) {
 		if (sumProdDTO == null) {
 			throw new IllegalArgumentException("Input object can not be null.");
