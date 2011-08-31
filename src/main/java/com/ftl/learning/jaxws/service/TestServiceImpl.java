@@ -1,7 +1,9 @@
 package com.ftl.learning.jaxws.service;
 
+import javax.annotation.Resource;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
+import javax.xml.ws.WebServiceContext;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
@@ -19,6 +21,9 @@ import com.ftl.learning.jaxws.service.dto.SumProdResponseDTO;
 public class TestServiceImpl implements TestService {
 
 	private static final Logger logger = LoggerFactory.getLogger(TestService.class);
+
+	@Resource
+	private WebServiceContext wsCtxt;
 
 	@Override
 	@WebMethod
@@ -45,4 +50,10 @@ public class TestServiceImpl implements TestService {
 		double[] response = TestManager.sumProd(sumProdDTO.getX(), sumProdDTO.getY());
 		return new SumProdResponseDTO(response[0], response[1]);
 	}
+
+	@WebMethod(exclude = true)
+	public WebServiceContext getWsCtxt() {
+		return wsCtxt;
+	}
+
 }

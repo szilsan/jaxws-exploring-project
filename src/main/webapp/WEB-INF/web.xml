@@ -16,20 +16,23 @@
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
 
-	<filter>
-		<filter-name>ShiroFilter</filter-name>
-		<filter-class>org.apache.shiro.web.servlet.IniShiroFilter</filter-class>
-		<init-param>
-			<param-name>configPath</param-name>
-			<param-value>classpath:shiro.ini</param-value>
-		</init-param>
-	</filter>
+<!-- 	<filter> -->
+<!-- 		<filter-name>ShiroFilter</filter-name> -->
+<!-- 		<filter-class>org.apache.shiro.web.servlet.IniShiroFilter</filter-class> -->
+<!-- 		<init-param> -->
+<!-- 			<param-name>configPath</param-name> -->
+<!-- 			<param-value>classpath:shiro.ini</param-value> -->
+<!-- 		</init-param> -->
+<!-- 	</filter> -->
 
-	<filter-mapping>
-		<filter-name>ShiroFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
+<!-- 	<filter-mapping> -->
+<!-- 		<filter-name>ShiroFilter</filter-name> -->
+<!-- 		<url-pattern>/*</url-pattern> -->
+<!-- 	</filter-mapping> -->
 
+	<listener>
+		<listener-class>com.ftl.learning.jaxws.filter.shiro.ShiroListener</listener-class>
+	</listener>
 	<listener>
 		<listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
 	</listener>
