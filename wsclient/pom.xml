@@ -5,7 +5,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.ftl.learning</groupId>
-	<artifactId>camel</artifactId>
+	<artifactId>wsclient</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
@@ -25,41 +25,7 @@
 			<artifactId>common_client</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-	
-	
-		<!-- Camel -->
-		<dependency>
-			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-core</artifactId>
-			<version>${camel.version}</version>
-		</dependency>
-
-		<!-- Camel CXF for web -->
-		<dependency>
-			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-cxf</artifactId>
-			<version>${camel.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-http</artifactId>
-			<version>${camel.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-http</artifactId>
-			<version>${camel.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-jetty</artifactId>
-			<version>${camel.version}</version>
-		</dependency>
-
-	</dependencies>
+		</dependencies>
 
 	<build>
 		<finalName>${artifact.name}</finalName>
@@ -76,7 +42,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<mainClass>com.ftl.learning.camel.CamelServer</mainClass>
+					<mainClass>com.ftl.learning.camel.CallWSTest</mainClass>
 				</configuration>
 			</plugin>
 			<plugin>
