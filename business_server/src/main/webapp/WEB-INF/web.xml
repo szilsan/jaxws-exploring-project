@@ -18,11 +18,11 @@
 	<servlet>
 		<description>JAX-WS endpoint</description>
 		<display-name>The JAX-WS servlet</display-name>
-		<servlet-name>jaxws</servlet-name>
+		<servlet-name>business_servers</servlet-name>
 		<servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>jaxws</servlet-name>
+		<servlet-name>business_servers</servlet-name>
 		<url-pattern>/testService</url-pattern>
 	</servlet-mapping>
 </web-app>
