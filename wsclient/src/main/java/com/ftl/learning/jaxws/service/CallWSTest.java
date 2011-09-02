@@ -11,7 +11,21 @@ import com.ftl.learning.jaxws.service.wsclient.TestService_Service;
  */
 public class CallWSTest {
 
+	public static String urlUsecamel = "";
+
 	public static void main(String[] args) {
+
+		// help
+		System.out
+				.println("Use -DuseCamel=[yes|no] to enable to connect Apache Camel. Default value is YES. The difference is only in port [8080|9080].");
+
+		String useCamel = System.getProperties().getProperty("useCamel");
+		if ("NO".equalsIgnoreCase(useCamel)) {
+			urlUsecamel = "http://localhost:8080/business_server/testService?wsdl";
+		} else {
+			urlUsecamel = "http://localhost:9080/business_server/testService?wsdl";
+		}
+
 		TestService_Service testService = new TestService_Service();
 		com.ftl.learning.jaxws.service.wsclient.TestService port = testService.getTestServicePort();
 

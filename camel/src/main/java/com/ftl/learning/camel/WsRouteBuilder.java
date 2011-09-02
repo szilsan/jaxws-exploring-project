@@ -1,7 +1,5 @@
 package com.ftl.learning.camel;
 
-import org.apache.camel.Exchange;
-import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,20 +13,14 @@ public class WsRouteBuilder extends RouteBuilder {
 	@Override
 	public void configure() throws Exception {
 		// getContext().setTracing(true);
+
 		errorHandler(deadLetterChannel("mock:error"));
+
 		from("jetty://http://localhost:9080/business_server/testService"). // honnan
 				to("log:input"). // log request
-				process(new Processor() { // do something
-					@Override
-					public void process(Exchange exchange) throws Exception {
-						logger.debug("Request is: " + exchange.getIn());
-					}
-				}).to("http://localhost:8080/business_server/testService?bridgeEndpoint=true"). // call real ws
-				process(new Processor() { // do something
-					@Override
-					public void process(Exchange exchange) throws Exception {
-						logger.debug("Response is:  " + exchange.getIn());
-					}
-				}).to("log:output"); // log response
+				process(new MyInProcessor()).// my own in processor
+				to("http://localhost:8080/business_server/testService?bridgeEndpoint=true"). // call real ws
+				process(new MyOutProcessor()).// my own in processor
+				to("log:output"); // log response
 	}
 }
