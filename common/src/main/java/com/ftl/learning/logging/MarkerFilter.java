@@ -1,4 +1,4 @@
-package com.ftl.learning.jaxws.filter;
+package com.ftl.learning.logging;
 
 import org.slf4j.Marker;
 import org.slf4j.MarkerFactory;

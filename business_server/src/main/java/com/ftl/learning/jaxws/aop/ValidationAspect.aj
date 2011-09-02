@@ -9,7 +9,8 @@ import javax.validation.ValidatorFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.ftl.learning.jaxws.filter.LOGMarkers;
+import com.ftl.learning.logging.LOGMarkers;
+
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;

@@ -16,14 +16,14 @@ public class WsRouteBuilder extends RouteBuilder {
 	public void configure() throws Exception {
 		getContext().setTracing(true);
 		errorHandler(deadLetterChannel("mock:error"));
-		from("jetty://http://localhost:9080/jaxws/testService"). // honnan
+		from("jetty://http://localhost:9080/business_server/testService"). // honnan
 				to("log:input"). // log request
 				process(new Processor() { // do something
 					@Override
 					public void process(Exchange exchange) throws Exception {
 						logger.debug("");
 					}
-				}).to("http://localhost:8080/jaxws/testService?bridgeEndpoint=true"). // call real ws
+				}).to("http://localhost:8080/business_server/testService?bridgeEndpoint=true"). // call real ws
 				to("log:output"); // log response
 	}
 }

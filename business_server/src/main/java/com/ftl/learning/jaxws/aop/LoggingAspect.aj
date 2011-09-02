@@ -3,7 +3,8 @@ package com.ftl.learning.jaxws.aop;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.ftl.learning.jaxws.filter.LOGMarkers;
+import com.ftl.learning.logging.LOGMarkers;
+
 
 aspect LoggingAspect {
 

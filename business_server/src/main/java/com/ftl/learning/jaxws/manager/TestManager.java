@@ -3,7 +3,7 @@ package com.ftl.learning.jaxws.manager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.ftl.learning.jaxws.filter.LOGMarkers;
+import com.ftl.learning.logging.LOGMarkers;
 
 public class TestManager {
 
