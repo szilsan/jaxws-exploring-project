@@ -42,7 +42,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<mainClass>com.ftl.learning.camel.CallWSTest</mainClass>
+					<mainClass>com.ftl.learning.jaxws.service.CallWSTest</mainClass>
 				</configuration>
 			</plugin>
 			<plugin>
