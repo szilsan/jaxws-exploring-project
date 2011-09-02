@@ -22,7 +22,7 @@ public class CamelServer {
 		main.enableHangupSupport();
 
 		// add routes
-		// main.addRouteBuilder(new MyRouteBuilder());
+		// main.addRouteBuilder(new PingerRouteBuilder());
 		main.addRouteBuilder(new WsRouteBuilder());
 
 		// run until you terminate the JVM
@@ -30,10 +30,10 @@ public class CamelServer {
 		main.run();
 	}
 
-	private static class MyRouteBuilder extends RouteBuilder {
+	private static class PingerRouteBuilder extends RouteBuilder {
 		@Override
 		public void configure() throws Exception {
-			from("timer:foo?delay=10000").process(new Processor() {
+			from("timer:foo?delay=60000").process(new Processor() {
 				public void process(Exchange exchange) throws Exception {
 					System.out.println("Invoked timer at " + new Date());
 				}
