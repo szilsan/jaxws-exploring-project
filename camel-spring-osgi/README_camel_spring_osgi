@@ -1,1 +1,3 @@
 Camel-spring-osgi tests.
+
+Start: mvn camel:run
