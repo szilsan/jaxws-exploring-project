@@ -1,3 +1,10 @@
 Camel-spring-osgi tests.
 
-Start: mvn camel:run
+Start: mvn camel:run (standalone mod)
+
+OSGI:
+Karaf: http://karaf.apache.org 
+	- 2.0.0-nal frisebb kell. Aktualis a 2.8.1
+	- installalni a bundle-ket, amik kellenek
+	  - camel, caamel-http, camel-jetty, camel-spring, spring
+

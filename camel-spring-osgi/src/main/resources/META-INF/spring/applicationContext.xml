@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+	<bean
+		id="myInProcessor" class="com.ftl.learning.camel.MyInProcessor"	name="myInProcessor" />
+	<bean
+		id="myOutProcessor"	class="com.ftl.learning.camel.MyOutProcessor" name="myInmyOutProcessorProcessor" />
+
+	<camelContext xmlns="http://camel.apache.org/schema/spring" id="testServiceRoute">
+		<route>
+			<from uri="jetty://http://localhost:9080/business_server/testService" />
+			<to uri="myInProcessor" />
+			<to uri="log:WSRouterIn" />
+			<to uri="http://localhost:8080/business_server/testService?bridgeEndpoint=true" />
+			<to uri="log:WSRouterOut" />
+			<to uri="myOutProcessor" />
+		</route>
+	</camelContext>
+
+	<camelContext xmlns="http://camel.apache.org/schema/spring">
+		<route>
+			<from uri="timer://myTimer?fixedRate=true&amp;period=10000" />
+			<to uri="log:ExampleRouter" />
+		</route>
+	</camelContext>
+
+</beans>
